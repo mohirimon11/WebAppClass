@@ -17,25 +17,36 @@ namespace WebApp.Repository.StudentRepository
 
             return _dbContext.SaveChanges()>0;
         }
-        public bool Delete(Student student)
+        public bool Delete(int id)
         {
-            return true;
+            Student aStudent = _dbContext.Students.FirstOrDefault(c => c.Id == id);
+             _dbContext.Students.Remove(aStudent);
+             return _dbContext.SaveChanges() > 0;
         }
         public bool Update(Student student)
         {
-            return true;
+            Student aStudent = _dbContext.Students.FirstOrDefault((c => c.Id ==student.Id ));
+            if (aStudent != null)
+            {
+                aStudent.RollNo = student.RollNo;
+                aStudent.Name = student.Name;
+                aStudent.Address = student.Address;
+                aStudent.Age = student.Age;
+
+            }
+            return _dbContext.SaveChanges()>0;
         }
 
         public List<Student> GetAll()
         {
-            List<Student> student = new List<Student>();
-            return student;
+
+            return _dbContext.Students.ToList();
         }
 
         public Student GetById(int id)
         {
-            Student student = new Student();
-            return student;
+            
+            return _dbContext.Students.FirstOrDefault(c=>c.Id==id);
         }
     }
 }

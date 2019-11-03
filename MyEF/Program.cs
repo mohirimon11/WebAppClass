@@ -13,27 +13,57 @@ namespace MyEF
         static void Main(string[] args)
         {
            StudentManager _studentManager = new StudentManager();
-           Student student = new Student()
-           {
-               RollNo = "001",
-               Name = "Khaleed Al-Amran",
-               Address ="Dhanmondi",
-               Age = 35
-
-           };
-           if (_studentManager.Add(student))
+            Student student = new Student()
             {
-               Console.WriteLine("Save Success");
-            }
-           else
-           {
-               Console.WriteLine("Fail Save!");
-           }
+                RollNo = "001",
+                Name = "Khaleed Al-Amran",
+                Address = "Dhanmondi",
+                Age = 35
 
-           Console.ReadKey();
+            };
+            //if (_studentManager.Add(student))
+            // {
+            //    Console.WriteLine("Save Success");
+            // }
+            //else
+            //{
+            //    Console.WriteLine("Fail Save!");
+            //}
+
+            //Delete
+            //if (_studentManager.Delete(1))
+            //{
+            //    Console.WriteLine("Delete Success");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Fail Delet!");
+            //}
 
 
 
+            Console.ReadKey();
+
+            //Update
+            
+            student.Id = 2;
+
+            student.Name = "Md. Khaleed Al-Amran";
+            student.Address = "Khulna";
+            student.Age = 36;
+
+            //if (_studentManager.Update(student))
+            //{
+            //    Console.WriteLine("Update Success");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Fail Update!");
+            //}
+
+            var students = _studentManager.GetAll();
+            var aStudent = _studentManager.GetById(3);
+            Console.ReadKey();
         }
     }
 }

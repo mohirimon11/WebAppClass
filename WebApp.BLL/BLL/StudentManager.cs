@@ -17,13 +17,14 @@ namespace WebApp.BLL.BLL
         {
             return _studentRepository.Add(student);
         }
-        public bool Delete(Student student)
+        public bool Delete(int id)
         {
-            return true;
+            
+            return _studentRepository.Delete(id);
         }
         public bool Update(Student student)
         {
-            return true;
+            return _studentRepository.Update(student);
         }
         public List<Student> GetAll()
         {
